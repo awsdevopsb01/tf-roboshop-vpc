@@ -8,5 +8,5 @@ vpc = {
       }
   }
 }
-env="dev"
 }
+env="dev"
