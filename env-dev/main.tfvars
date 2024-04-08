@@ -31,11 +31,11 @@ app = {
   frontend = {
     name = "frontend"
     instance_type="t3.micro"
-    subnet= "web"
+    subnet_name = "web"
   }
   catalogue = {
     name          = "catalogue"
     instance_type ="t3.micro"
-    subnet        = "app"
+    subnet_name        = "app"
   }
 }
