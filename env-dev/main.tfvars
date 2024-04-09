@@ -41,5 +41,9 @@ app = {
     name          = "catalogue"
     instance_type ="t3.micro"
     subnet_name        = "app"
+    desired_capacity = 2
+    max_size = 5
+    min_size = 2
+    bastion_cidr = ["172.31.42.163/32"]
   }
 }
