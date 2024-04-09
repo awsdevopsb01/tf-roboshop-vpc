@@ -14,9 +14,9 @@ module "app" {
   for_each = var.app
   instance_type = each.value["instance_type"]
   name = each.value["name"]
-  desired_capacity = var.desired_capacity
-  max_size= var.max_size
-  min_size=var.min_size
+  desired_capacity = each.value["desired_capacity"]
+  max_size= each.value["max_size"]
+  min_size=each.value["min_size"]
 
   env=var.env
   bastion_cidr = var.bastion_cidr
