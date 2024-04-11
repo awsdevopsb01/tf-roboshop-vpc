@@ -3,6 +3,7 @@ bastion_cidr = ["172.31.42.163/32"]
 default_vpc_id = "vpc-0425ed6e297d9e307"
 default_vpc_cidr = "172.31.0.0/16"
 default_vpc_rtb = "rtb-055834df42944e6e3"
+engine_version = "4.0.0"
 vpc = {
   main = {
     cidr_block = "10.0.0.0/16"
