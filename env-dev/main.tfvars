@@ -55,11 +55,11 @@ app = {
   }
 }
 
+kms_arn = "arn:aws:kms:us-east-1:280878923025:key/1598ad31-8c90-467c-8523-f3a951215606"
 docdb = {
   main = {
     subnet_name = "db"
     app_db_cidr = "app"
     engine_version = "4.0.0"
-    kms_arn = "arn:aws:kms:us-east-1:280878923025:key/1598ad31-8c90-467c-8523-f3a951215606"
   }
 }
