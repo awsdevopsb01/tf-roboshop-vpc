@@ -25,27 +25,23 @@ module "vpc" {
 #  bastion_cidr = var.bastion_cidr
 #
 #  subnet_ids = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["subnet_name"],null),"subnet_ids",null)
-#  allow_app_cidr=lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["subnet_name"],null),"subnet_cidrs",null)
-#  vpc_id = lookup(lookup(module.vpc,"main",null ),"vpc_id",null)
+#  allow_app_cidr=lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["allow_app_cidr"],null),"subnet_cidrs",null)
+#  vpc_id = local.vpc_id
 #}
 
 
 module "docdb" {
   source = "git::https://github.com/awsdevopsb01/tf-module-docdb.git"
 
-  for_each = var.app
-  instance_type = each.value["instance_type"]
-  name = each.value["name"]
+  for_each = var.docdb
+  subnet_ids = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["subnet_name"],null),"subnet_ids",null)
+  allow_db_cidr=lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["allow_db_cidr"],null),"subnet_cidrs",null)
+  engine_version = var.engine_version
 
   env=var.env
+  tags = local.tags
+  vpc_id = local.vpc_id
+  kms_arn = var.kms_arn
 
-  engine_version = var.engine_version
-  subnet_ids = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["subnet_name"],null),"subnet_ids",null)
-  allow_db_cidr=lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["subnet_name"],null),"subnet_cidrs",null)
-  vpc_id = lookup(lookup(module.vpc,"main",null ),"vpc_id",null)
 }
 
-
-#variable "kms_arn" {}
-#variable "tags" {}
-#variable "allow_db_cidr" {}
