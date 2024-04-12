@@ -5,6 +5,5 @@ variable "bastion_cidr" {}
 variable "default_vpc_id" {}
 variable "default_vpc_cidr" {}
 variable "default_vpc_rtb" {}
-variable "engine_version" {}
 variable "docdb" {}
 variable "kms_arn" {}
