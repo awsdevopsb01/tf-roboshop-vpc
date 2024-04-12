@@ -36,7 +36,7 @@ module "docdb" {
   for_each = var.docdb
   subnet_ids = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["subnet_name"],null),"subnet_ids",null)
   allow_db_cidr=lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["allow_db_cidr"],null),"subnet_cidrs",null)
-  engine_version = var.engine_version
+  engine_version = each.value["engine_version"]
 
   env=var.env
   tags = local.tags
