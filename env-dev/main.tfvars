@@ -81,7 +81,7 @@ elasticache = {
     subnet_name = "db"
     allow_db_cidr = "app"
     engine_version = "6.x"
-    node_type = "cache.t2.micro"
+    node_type = "cache.t2.medium"
     num_node_groups = 1
     replicas_per_node_group = 1
   }

@@ -73,6 +73,7 @@ module "elasticache" {
   engine_version = each.value["engine_version"]
   num_node_groups = each.value["instance_count"]
   replicas_per_node_group = each.value["instance_class"]
+  node_type=each.value["node_type"]
 
   env=var.env
   tags = local.tags
