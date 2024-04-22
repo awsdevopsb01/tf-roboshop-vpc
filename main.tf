@@ -47,15 +47,32 @@ module "vpc" {
 #
 #}
 
-module "rds" {
-  source = "git::https://github.com/awsdevopsb01/tf-module-rds.git"
+#module "rds" {
+#  source = "git::https://github.com/awsdevopsb01/tf-module-rds.git"
+#
+#  for_each = var.rds
+#  subnets = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["subnet_name"],null),"subnet_ids",null)
+#  allow_db_cidr = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["allow_db_cidr"],null),"subnet_cidrs",null)
+#  engine_version = each.value["engine_version"]
+#  instance_count = each.value["instance_count"]
+#  instance_class = each.value["instance_class"]
+#
+#  env=var.env
+#  tags = local.tags
+#  vpc_id = local.vpc_id
+#  kms_arn = var.kms_arn
+#
+#}
 
-  for_each = var.rds
+module "elasticache" {
+  source = "git::https://github.com/awsdevopsb01/tf-module-elasticache.git"
+
+  for_each = var.elasticache
   subnets = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["subnet_name"],null),"subnet_ids",null)
   allow_db_cidr = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["allow_db_cidr"],null),"subnet_cidrs",null)
   engine_version = each.value["engine_version"]
-  instance_count = each.value["instance_count"]
-  instance_class = each.value["instance_class"]
+  num_node_groups = each.value["instance_count"]
+  replicas_per_node_group = each.value["instance_class"]
 
   env=var.env
   tags = local.tags
