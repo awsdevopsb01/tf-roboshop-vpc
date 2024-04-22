@@ -68,16 +68,16 @@ module "elasticache" {
   source = "git::https://github.com/awsdevopsb01/tf-module-elasticache.git"
 
   for_each = var.elasticache
-  subnets = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["subnet_name"],null),"subnet_ids",null)
-  allow_db_cidr = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["allow_db_cidr"],null),"subnet_cidrs",null)
+  subnets  = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["subnet_name"],null),"subnet_ids",null)
+  allow_db_cidr  = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["allow_db_cidr"],null),"subnet_cidrs",null)
   engine_version = each.value["engine_version"]
-  num_node_groups = each.value["instance_count"]
-  replicas_per_node_group = each.value["instance_class"]
-  node_type=each.value["node_type"]
+  num_node_groups         = each.value["num_node_groups"]
+  replicas_per_node_group = each.value["replicas_per_node_group"]
+  node_type               = each.value["node_type"]
 
-  env=var.env
+  env  = var.env
   tags = local.tags
-  vpc_id = local.vpc_id
+  vpc_id  = local.vpc_id
   kms_arn = var.kms_arn
 
 }
