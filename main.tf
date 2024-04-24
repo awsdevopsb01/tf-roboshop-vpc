@@ -88,7 +88,7 @@ module "rabbitmq" {
   for_each = var.rabbitmq
   subnets  = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["subnet_name"],null),"subnet_ids",null)
   allow_db_cidr  = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["allow_db_cidr"],null),"subnet_cidrs",null)
-  instance_type=var.instance_type
+  instance_type = each.value["instance_type"]
 
   env  = var.env
   tags = local.tags
