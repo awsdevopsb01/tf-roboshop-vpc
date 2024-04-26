@@ -112,5 +112,6 @@ module "app" {
   vpc_id = local.vpc_id
   env=var.env
   bastion_cidr = var.bastion_cidr
+  tags = local.tags
 
 }
