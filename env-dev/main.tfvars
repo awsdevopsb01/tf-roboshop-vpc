@@ -3,7 +3,7 @@ bastion_cidr = ["172.31.42.163/32"]
 default_vpc_id = "vpc-0425ed6e297d9e307"
 default_vpc_cidr = "172.31.0.0/16"
 default_vpc_rtb = "rtb-055834df42944e6e3"
-
+domain_name = "nldevopsb01.online"
 
 vpc = {
   main = {
@@ -43,6 +43,8 @@ app = {
     max_size = 5
     min_size = 1
     app_port = 80
+    listener_priority = 1
+    dns_name = "dev"
   }
 
   catalogue = {
@@ -54,6 +56,7 @@ app = {
     max_size = 5
     min_size = 1
     app_port = 8080
+    listener_priority = 1
   }
 }
 
