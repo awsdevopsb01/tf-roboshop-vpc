@@ -115,6 +115,7 @@ module "app" {
 
   domain_id     = var.domain_id
   domain_name   = var.domain_name
+  listener_priority = var.listener_priority
   env           = var.env
   bastion_cidr  = var.bastion_cidr
   tags          = local.tags

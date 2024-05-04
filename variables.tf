@@ -13,3 +13,4 @@ variable "rabbitmq" {}
 variable "alb" {}
 variable "domain_id" {}
 variable "domain_name" {}
+variable "listener_priority" {}
