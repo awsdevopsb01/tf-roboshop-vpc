@@ -95,7 +95,7 @@ module "alb" {
 }
 
 module "app" {
-  depends_on = [module.docdb, module.vpc, module.rds, module.elasticache, module.rabbitmq, module.alb]
+  depends_on = [module.vpc, module.docdb, module.rds, module.elasticache, module.rabbitmq, module.alb]
   source = "git::https://github.com/awsdevopsb01/tf-module-app.git"
 
   for_each = var.app

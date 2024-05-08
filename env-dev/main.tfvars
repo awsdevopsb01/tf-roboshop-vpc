@@ -5,6 +5,7 @@ default_vpc_cidr = "172.31.0.0/16"
 default_vpc_rtb = "rtb-055834df42944e6e3"
 domain_name = "nldevopsb01.online"
 domain_id   = "Z01307132WU1DJMGVKGO6"
+kms_arn = "arn:aws:kms:us-east-1:280878923025:key/1598ad31-8c90-467c-8523-f3a951215606"
 
 vpc = {
   main = {
@@ -63,7 +64,7 @@ app = {
   }
 }
 
-kms_arn = "arn:aws:kms:us-east-1:280878923025:key/1598ad31-8c90-467c-8523-f3a951215606"
+
 docdb = {
   main = {
     subnet_name = "db"
@@ -107,7 +108,7 @@ alb = {
   public = {
     name        = "public"
     subnet_name = "public"
-    allow_alb_cidr = "public"
+    allow_alb_cidr = null
     internal = false
   }
   private = {
