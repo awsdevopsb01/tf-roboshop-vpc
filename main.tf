@@ -113,6 +113,7 @@ module "app" {
   listener_arn  = lookup(lookup(module.alb,each.value["lb_type"],null ),"listener_arn",null)
   lb_dns_name   = lookup(lookup(module.alb,each.value["lb_type"],null ),"dns_name",null)
   vpc_id        = local.vpc_id
+  parameter     = each.value["parameter"]
 
   domain_id     = var.domain_id
   domain_name   = var.domain_name
