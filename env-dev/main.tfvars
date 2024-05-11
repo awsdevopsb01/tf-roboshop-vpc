@@ -74,7 +74,7 @@ app = {
     max_size = 5
     min_size = 1
     app_port = 8080
-    listener_priority = 1
+    listener_priority = 2
     lb_type = "private"
     parameter = ["docdb"]
   }
@@ -88,7 +88,7 @@ app = {
     max_size = 5
     min_size = 1
     app_port = 8080
-    listener_priority = 1
+    listener_priority = 3
     lb_type = "private"
     parameter = []
   }
@@ -102,7 +102,7 @@ app = {
     max_size = 5
     min_size = 1
     app_port = 8080
-    listener_priority = 1
+    listener_priority = 4
     lb_type = "private"
     parameter = ["rds"]
   }
