@@ -106,6 +106,20 @@ app = {
     lb_type = "private"
     parameter = ["rds"]
   }
+
+  payment = {
+    name          = "payment"
+    instance_type ="t3.micro"
+    subnet_name   = "app"
+    allow_app_cidr = "app"
+    desired_capacity = 1
+    max_size = 5
+    min_size = 1
+    app_port = 8080
+    listener_priority = 5
+    lb_type = "private"
+    parameter = []
+  }
 }
 
 docdb = {
