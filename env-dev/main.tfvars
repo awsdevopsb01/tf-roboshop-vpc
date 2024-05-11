@@ -64,8 +64,49 @@ app = {
     lb_type = "private"
     parameter = ["docdb"]
   }
-}
 
+  user = {
+    name          = "user"
+    instance_type ="t3.micro"
+    subnet_name   = "app"
+    allow_app_cidr = "app"
+    desired_capacity = 1
+    max_size = 5
+    min_size = 1
+    app_port = 8080
+    listener_priority = 1
+    lb_type = "private"
+    parameter = ["docdb"]
+  }
+
+  cart = {
+    name          = "cart"
+    instance_type ="t3.micro"
+    subnet_name   = "app"
+    allow_app_cidr = "app"
+    desired_capacity = 1
+    max_size = 5
+    min_size = 1
+    app_port = 8080
+    listener_priority = 1
+    lb_type = "private"
+    parameter = []
+  }
+
+  shipping = {
+    name          = "shipping"
+    instance_type ="t3.micro"
+    subnet_name   = "app"
+    allow_app_cidr = "app"
+    desired_capacity = 1
+    max_size = 5
+    min_size = 1
+    app_port = 8080
+    listener_priority = 1
+    lb_type = "private"
+    parameter = ["rds"]
+  }
+}
 
 docdb = {
   main = {
