@@ -68,14 +68,15 @@ module "rabbitmq" {
 
   for_each = var.rabbitmq
   subnets  = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["subnet_name"],null),"subnet_ids",null)
-  allow_db_cidr  = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["allow_db_cidr"],null),"subnet_cidrs",null)
+  allow_db_cidr = lookup(lookup(lookup(lookup(module.vpc,"main",null ),"subnet_ids",null),each.value["allow_db_cidr"],null),"subnet_cidrs",null)
   instance_type = each.value["instance_type"]
 
   env  = var.env
   tags = local.tags
   vpc_id  = local.vpc_id
   kms_arn = var.kms_arn
-  bastion_cidr=var.bastion_cidr
+  bastion_cidr= var.bastion_cidr
+  domain_id   = var.domain_id
 
 }
 
