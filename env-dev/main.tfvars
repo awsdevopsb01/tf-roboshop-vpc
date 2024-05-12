@@ -81,7 +81,7 @@ app = {
 
   cart = {
     name          = "cart"
-    instance_type ="t3.micro"
+    instance_type = "t3.micro"
     subnet_name   = "app"
     allow_app_cidr = "app"
     desired_capacity = 1
@@ -136,7 +136,7 @@ rds = {
   main = {
     subnet_name = "db"
     allow_db_cidr = "app"
-    engine_version = "5.7.mysql_aurora.2.11.5"
+    engine_version = "5.7.mysql_aurora.2.11.2"
     instance_count = 1
     instance_class = "db.t3.small"
   }
@@ -144,10 +144,10 @@ rds = {
 
 elasticache = {
   main = {
-    subnet_name = "db"
-    allow_db_cidr = "app"
-    engine_version = "6.x"
-    node_type = "cache.t2.medium"
+    subnet_name     = "db"
+    allow_db_cidr   = "app"
+    engine_version  = "6.x"
+    node_type       = "cache.t2.medium"
     num_node_groups = 1
     replicas_per_node_group = 1
   }
