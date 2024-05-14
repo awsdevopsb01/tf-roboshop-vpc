@@ -121,7 +121,8 @@ module "app" {
   domain_name   = var.domain_name
   env           = var.env
   bastion_cidr  = var.bastion_cidr
-  tags          = local.tags
+  monitor_cidr  = var.monitor_cidr
+  tags          = merge(local.tags,{Monitor=true})
   kms_arn = var.kms_arn
 
 }
